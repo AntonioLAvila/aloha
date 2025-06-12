@@ -115,4 +115,10 @@ TASK_CONFIGS = {
         'episode_len': 800,
         'camera_names': ['cam_high', 'cam_left_wrist', 'cam_right_wrist']
     },
+    'test':{
+        'dataset_dir': DATA_DIR + '/test',
+        'num_episodes': 1,
+        'episode_len': 800,
+        'camera_names':['cam_high', 'cam_left_wrist', 'cam_right_wrist']
+    }
 }
