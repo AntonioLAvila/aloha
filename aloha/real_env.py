@@ -284,8 +284,9 @@ def make_real_env(
     torque_base: bool = False,
 ):
     if node is None:
-        node = get_interbotix_global_node()
-        if node is None:
+        try:
+            node = get_interbotix_global_node()
+        except:
             node = create_interbotix_global_node('aloha')
     env = RealEnv(
         node=node,
