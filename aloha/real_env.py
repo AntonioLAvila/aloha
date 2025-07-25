@@ -25,6 +25,7 @@ from interbotix_common_modules.common_robot.robot import (
     create_interbotix_global_node,
     get_interbotix_global_node,
     InterbotixRobotNode,
+    robot_startup
 )
 from interbotix_xs_modules.xs_robot.arm import InterbotixManipulatorXS
 if IS_MOBILE:
@@ -297,6 +298,27 @@ def make_real_env(
         is_mobile=IS_MOBILE,
         torque_base=torque_base,
     )
+    return env
+
+def make_real_env_and_spin(
+    node: InterbotixRobotNode = None,
+    setup_robots: bool = True,
+    setup_base: bool = False,
+    torque_base: bool = False,
+):
+    if node is None:
+        try:
+            node = get_interbotix_global_node()
+        except:
+            node = create_interbotix_global_node('aloha')
+    env = RealEnv(
+        node=node,
+        setup_robots=setup_robots,
+        setup_base=setup_base,
+        is_mobile=IS_MOBILE,
+        torque_base=torque_base,
+    )
+    robot_startup(node)
     return env
 
 

@@ -114,6 +114,7 @@ class Recorder:
         self.arm_command = None
         self.gripper_command = None
         self.is_debug = is_debug
+        # self.side = side
 
         node.create_subscription(
             JointState,
@@ -140,6 +141,7 @@ class Recorder:
         time.sleep(0.1)
 
     def follower_state_cb(self, data: JointState):
+        # print(f'follower_{self.side}: {self.qpos}')
         self.qpos = data.position
         self.qvel = data.velocity
         self.effort = data.effort
