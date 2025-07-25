@@ -25,7 +25,8 @@ from interbotix_common_modules.common_robot.robot import (
     create_interbotix_global_node,
     get_interbotix_global_node,
     InterbotixRobotNode,
-    robot_startup
+    robot_startup,
+    robot_shutdown
 )
 from interbotix_xs_modules.xs_robot.arm import InterbotixManipulatorXS
 if IS_MOBILE:
@@ -86,6 +87,7 @@ class RealEnv:
             True. Only applies when IS_MOBILE is True
         :raises ValueError: On providing False for setup_base but the robot is not mobile
         """
+        self.node = node
         self.follower_bot_left = InterbotixManipulatorXS(
             robot_model='vx300s',
             group_name='arm',
@@ -263,6 +265,12 @@ class RealEnv:
             reward=self.get_reward(),
             discount=None,
             observation=obs)
+    
+    def shutdown(self):
+        robot_shutdown(self.node)
+    
+    def spinup(self):
+        robot_startup(self.node)
 
 
 def get_action(
