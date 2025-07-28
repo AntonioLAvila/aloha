@@ -267,6 +267,8 @@ class RealEnv:
             observation=obs)
     
     def step_no_reqs(self, action=None, base_action=None, get_base_vel=False, get_obs=True):
+        is_set_left = None
+        is_set_right = None
         if action is not None:
             state_len = int(len(action) / 2)
             left_action = action[:state_len]
