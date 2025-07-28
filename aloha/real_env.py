@@ -266,6 +266,31 @@ class RealEnv:
             discount=None,
             observation=obs)
     
+    def step_no_reqs(self, action=None, base_action=None, get_base_vel=False, get_obs=True):
+        if action is not None:
+            state_len = int(len(action) / 2)
+            left_action = action[:state_len]
+            right_action = action[state_len:]
+            is_set_left = self.follower_bot_left.arm.set_joint_positions(left_action[:6], blocking=False)
+            is_set_right = self.follower_bot_right.arm.set_joint_positions(right_action[:6], blocking=False)
+            self.set_gripper_pose(left_action[-1], right_action[-1])
+        if base_action is not None:
+            base_action_linear, base_action_angular = base_action
+            self.base.base.command_velocity_xyaw(x=base_action_linear, yaw=base_action_angular)
+        if get_obs:
+            obs = self.get_observation(get_base_vel)
+            obs['is_set_left'] = is_set_left
+            obs['is_set_right'] = is_set_right
+        else:
+            obs = None
+        return dm_env.TimeStep(
+            step_type=dm_env.StepType.MID,
+            reward=self.get_reward(),
+            discount=None,
+            observation=obs
+        )
+
+    
     def shutdown(self):
         robot_shutdown(self.node)
     
