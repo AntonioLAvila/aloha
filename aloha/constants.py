@@ -92,34 +92,6 @@ TASK_CONFIGS = {
     #     'camera_names': ['cam_high', 'cam_left_wrist', 'cam_right_wrist']
     # },
 
-    'aloha_mobile_hello_aloha':{
-        'dataset_dir': DATA_DIR + '/aloha_mobile_hello_aloha',
-        'episode_len': 800,
-        'camera_names': ['cam_high', 'cam_left_wrist', 'cam_right_wrist']
-    },
-
-    'aloha_mobile_dummy':{
-        'dataset_dir': DATA_DIR + '/aloha_mobile_dummy',
-        'episode_len': 1000,
-        'camera_names': ['cam_high', 'cam_left_wrist', 'cam_right_wrist']
-    },
-
-    'aloha_stationary_hello_aloha':{
-        'dataset_dir': DATA_DIR + '/aloha_stationary_hello_aloha',
-        'episode_len': 800,
-        'camera_names': ['cam_high', 'cam_left_wrist', 'cam_right_wrist']
-    },
-
-    'aloha_stationary_dummy':{
-        'dataset_dir': DATA_DIR + '/aloha_stationary_dummy',
-        'episode_len': 800,
-        'camera_names': ['cam_high', 'cam_left_wrist', 'cam_right_wrist']
-    },
-    'test':{
-        'dataset_dir': DATA_DIR + '/test',
-        'episode_len': 800,
-        'camera_names':['cam_high', 'cam_left_wrist', 'cam_right_wrist']
-    },
     'move_wafer': {
         'dataset_dir': DATA_DIR + '/move_wafer',
         'episode_len': 1600,
@@ -129,5 +101,10 @@ TASK_CONFIGS = {
         'dataset_dir': DATA_DIR + '/pick_up_wafer',
         'episode_len': 550,
         'camera_names':['cam_high', 'cam_left_wrist', 'cam_right_wrist']
-    }
+    },
+    'turn': {
+        'dataset_dir': DATA_DIR + '/turn',
+        'episode_len': 100,
+        'camera_names':['cam_high', 'cam_left_wrist', 'cam_right_wrist']
+    },
 }
