@@ -21,3 +21,8 @@ To train imitation learning algorithms, you would also need to install:
 - [``config``](./config/): a config for each robot, designating the port they should bind to, more details in quick start guide.
 - [``launch``](./launch): a ROS 2 launch file for all cameras and manipulators.
 - [``scripts``](./scripts/): Python scripts for teleop and data collection
+
+
+# Modifications
+
+`real_env.py` now has some added functionality like `make_real_env_and_spin` and `step_no_reqs` in `RealEnv`. Generally fixes some bugs where the interbotix node wouldn't spin sometimes. Also added `spinup` and `shutdown` methods to `RealEnv` to manage the interbotix node.
