@@ -104,7 +104,17 @@ TASK_CONFIGS = {
     },
     'turn': {
         'dataset_dir': DATA_DIR + '/turn',
-        'episode_len': 100,
+        'episode_len': 200,
+        'camera_names':['cam_high', 'cam_left_wrist', 'cam_right_wrist']
+    },
+    'turn_single_cam': {
+        'dataset_dir': DATA_DIR + '/turn_single_cam',
+        'episode_len': 200,
+        'camera_names':['cam_left_wrist']
+    },
+    'set_wafer': {
+        'dataset_dir': DATA_DIR + '/set_wafer',
+        'episode_len': 500,
         'camera_names':['cam_high', 'cam_left_wrist', 'cam_right_wrist']
     },
 }
